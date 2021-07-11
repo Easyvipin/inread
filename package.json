@@ -1,0 +1,29 @@
+{
+  "name": "inread",
+  "version": "1.0.0",
+  "description": "Reading Assitant App",
+  "main": "index.js",
+  "scripts": {
+    "start": "node backend/index",
+    "server": "nodemon backend/index",
+    "client": "npm run start --prefix frontend",
+    "dev": "concurrently \"npm run server \"  \"npm run client \"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "easyvipin",
+  "license": "MIT",
+  "dependencies": {
+    "concurrently": "^6.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-jwt": "^6.0.0",
+    "helmet": "^4.1.0",
+    "jwks-rsa": "^1.9.0",
+    "mongoose": "^5.13.2",
+    "path": "^0.12.7"
+  }
+}
