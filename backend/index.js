@@ -19,6 +19,13 @@ const app = express();
 /**
  *  App Configuration
  */
+
+app.use(helmet());
+app.use(cors());
+app.use(express.json());
+connectDb();
+app.use("/read-api", ListRouter);
+
 const __dirname = path.resolve();
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "/frontend/build")));
@@ -30,14 +37,6 @@ if (process.env.NODE_ENV === "production") {
     res.send("API is running....");
   });
 }
-
-app.use(helmet());
-app.use(cors());
-app.use(express.json());
-connectDb();
-app.use("/read-api", ListRouter);
-
-const __dirname = path.resolve();
 
 app.use(function (err, req, res, next) {
   console.log(err);
