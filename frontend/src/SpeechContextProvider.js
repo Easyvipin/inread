@@ -79,7 +79,6 @@ const SpeechContextProvider = ({ children }) => {
     },
   ];
   const searchWord = async (word) => {
-    console.log(token);
     setLoading(true);
     try {
       let res = await axios.get(
