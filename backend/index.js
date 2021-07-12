@@ -4,7 +4,7 @@
 const path = require("path");
 const express = require("express");
 const cors = require("cors");
-const helmet = require("helmet");
+
 const { clientOrigins, serverPort } = require("./config/env.dev");
 
 const { ListRouter } = require("./Routes/ListRoutes");
@@ -20,23 +20,6 @@ const app = express();
  *  App Configuration
  */
 
-app.use(
-  helmet({
-    contentSecurityPolicy: {
-      directives: {
-        defaultSrc: ["'self'"],
-        scriptSrc: ["'self'"],
-        styleSrc: ["'self'", "https://fonts.googleapis.com", "'unsafe-inline'"],
-        imgSrc: ["'self'", "data:"],
-        connectSrc: ["'self'", "https://easyvipin.au.auth0.com/oauth/token"],
-        fontSrc: ["'self'", "https://fonts.gstatic.com"],
-        objectSrc: ["'self'"],
-        mediaSrc: ["'self'"],
-        frameSrc: ["'self'", "easyvipin.au.auth0.com"],
-      },
-    },
-  })
-);
 app.use(cors());
 app.use(express.json());
 connectDb();
