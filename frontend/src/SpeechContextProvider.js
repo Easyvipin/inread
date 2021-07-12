@@ -105,7 +105,7 @@ const SpeechContextProvider = ({ children }) => {
 
       const response = await axios({
         method: "post",
-        url: `${serverUrl}/read-api/save-word`,
+        url: `/read-api/save-word`,
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
@@ -118,6 +118,7 @@ const SpeechContextProvider = ({ children }) => {
       notify(response.data.message);
     } catch (error) {
       notify("Error,say save again");
+      console.log(error);
     } finally {
       setLoading(false);
     }
@@ -128,7 +129,7 @@ const SpeechContextProvider = ({ children }) => {
 
       const response = await axios({
         method: "post",
-        url: `${serverUrl}/read-api/saves`,
+        url: `/read-api/saves`,
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
@@ -139,7 +140,8 @@ const SpeechContextProvider = ({ children }) => {
       });
       setSaves(response.data.words);
     } catch (error) {
-      notify("Error,say save again");
+      console.log(error);
+      notify("Some Error");
     } finally {
       setLoading(false);
     }
@@ -151,7 +153,7 @@ const SpeechContextProvider = ({ children }) => {
 
       const response = await axios({
         method: "post",
-        url: `${serverUrl}/read-api/delete-word`,
+        url: `/read-api/delete-word`,
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
